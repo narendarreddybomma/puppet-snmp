@@ -179,15 +179,14 @@ class { 'snmp':
 
 To install a SNMP version 3 user for snmpd:
 
-```puppet
 snmp::snmpv3_user { 'myuser':
   authpass => '1234auth',
   privpass => '5678priv',
 }
+
 class { 'snmp':
   snmpd_config => [ 'rouser myuser authPriv' ],
 }
-```
 
 To install a SNMP version 3 user for snmptrapd:
 
@@ -198,6 +197,33 @@ snmp::snmpv3_user { 'myuser':
   daemon   => 'snmptrapd',
 }
 ```
+SNMPv3 Authentication Protocols
+
+The snmp::snmpv3_user define supports SNMPv3 authentication protocol configuration through the authtype parameter.
+
+Supported authentication protocols include:
+
+MD5
+SHA
+SHA-256
+
+For example, to create an SNMPv3 user using SHA-256 authentication and AES privacy:
+
+snmp::snmpv3_user { 'myuser':
+  authpass => 'myauthpass',
+  authtype => 'SHA-256',
+  privpass => 'myprivpass',
+  privtype => 'AES',
+}
+
+The resulting SNMPv3 user uses:
+
+Authentication protocol: SHA-256
+Authentication password: myauthpass
+Privacy protocol: AES
+Privacy password: myprivpass
+
+SHA-256 can be used when stronger authentication is required than the legacy MD5 or SHA authentication protocols.
 
 ### Access Control
 
