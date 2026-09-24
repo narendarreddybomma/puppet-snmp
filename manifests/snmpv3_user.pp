@@ -12,7 +12,7 @@
 #   Authentication password for the user.
 #
 # @param authtype
-#   # Authentication type for the user. SHA, SHA-256 or MD5
+#   Authentication type for the user. SHA, SHA-256 or MD5
 #
 # @param privpass
 #   Encryption password for the user.
