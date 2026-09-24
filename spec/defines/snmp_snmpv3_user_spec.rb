@@ -508,4 +508,3 @@ describe 'snmp::snmpv3_user' do
     end
   end
 end
-

@@ -30,6 +30,7 @@ describe 'snmp::snmpv3_usm_hash' do
                         .and_return('0x6695febc9288e36282235fc7151f1284')
     }
   end
+
   describe 'with SHA-256 hash' do
     it {
       is_expected.to run.with_params('SHA-256',
