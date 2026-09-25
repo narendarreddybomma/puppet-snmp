@@ -204,7 +204,7 @@ describe 'snmp::snmpv3_user' do
           end
 
           it {
-            is_expected.to contain_exec('stop-snmpd').with(
+            is_expected.to contain_exec('stop-snmptrapd').with(
               path: '/bin:/sbin:/usr/bin:/usr/sbin',
               user: 'root',
             ).that_requires(['Package[snmpd]', 'File[var-net-snmp]'])
@@ -214,7 +214,7 @@ describe 'snmp::snmpv3_user' do
               path: '/var/lib/snmp/snmpd.conf',
               line: 'createUser myTRAPuser SHA "myauthpass"',
               match: '^createUser myTRAPuser ',
-            ).that_subscribes_to(['Exec[stop-snmpd]']).that_comes_before('Service[snmpd]')
+            ).that_subscribes_to(['Exec[stop-snmptrapd]']).that_comes_before('Service[snmptrapd]')
           }
         end
 
